@@ -1,6 +1,6 @@
 package com.duoc.SpringApp_Grupo5.Modelo.LogisticayEnvio;
-
 import com.duoc.SpringApp_Grupo5.Modelo.ReportesyAnaliticas.Cliente;
+import com.duoc.SpringApp_Grupo5.Modelo.ReportesyAnaliticas.Pedido;
 
 public class Envio {
     private int idEnvio;
