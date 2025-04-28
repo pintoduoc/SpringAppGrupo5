@@ -1,12 +1,14 @@
 package com.duoc.SpringApp_Grupo5.Modelo.ReportesyAnaliticas;
 
+import com.duoc.SpringApp_Grupo5.Modelo.GestionInventario.producto;
+
 public class Resena {
     private int idResena, calificacion;
     private Cliente cliente;
-    private Producto producto;
+    private producto producto;
     private String comentario;
 
-    public Resena(int idResena, int calificacion, Cliente cliente, Producto producto, String comentario) {
+    public Resena(int idResena, int calificacion, Cliente cliente, producto producto, String comentario) {
         this.idResena = idResena;
         this.calificacion = calificacion;
         this.cliente = cliente;
@@ -38,11 +40,11 @@ public class Resena {
         this.cliente = cliente;
     }
 
-    public Producto getProducto() {
+    public producto getProducto() {
         return producto;
     }
 
-    public void setProducto(Producto producto) {
+    public void setProducto(producto producto) {
         this.producto = producto;
     }
 

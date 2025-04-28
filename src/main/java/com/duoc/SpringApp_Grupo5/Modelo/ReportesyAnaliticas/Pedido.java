@@ -2,15 +2,15 @@ package com.duoc.SpringApp_Grupo5.Modelo.ReportesyAnaliticas;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import com.duoc.SpringApp_Grupo5.Modelo.GestionInventario.producto;
 
 public class Pedido {
     private int idPedido;
     private Cliente cliente;
     private String estado;
-    private List<Producto> productosPedido = new ArrayList<>();
+    private List<producto> productosPedido = new ArrayList<>();
 
-    public Pedido(int idPedido, Cliente cliente, String estado, List<Producto> productosPedido) {
+    public Pedido(int idPedido, Cliente cliente, String estado, List<producto> productosPedido) {
         this.idPedido = idPedido;
         this.cliente = cliente;
         this.estado = estado;
@@ -41,11 +41,11 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public List<Producto> getProductosPedido() {
+    public List<producto> getProductosPedido() {
         return productosPedido;
     }
 
-    public void setProductosPedido(List<Producto> productosPedido) {
+    public void setProductosPedido(List<producto> productosPedido) {
         this.productosPedido = productosPedido;
     }
     //Metodos
