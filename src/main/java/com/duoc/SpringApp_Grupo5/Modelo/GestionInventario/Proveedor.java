@@ -1,14 +1,14 @@
 package com.duoc.SpringApp_Grupo5.Modelo.GestionInventario;
 
-public class proveedor {
+public class Proveedor {
     private int id;
     private String nombre, contacto, direccion;
 
     //Constructores:
-    public proveedor() {
+    public Proveedor() {
     }
 
-    public proveedor(String nombre, int id, String contacto, String direccion) {
+    public Proveedor(String nombre, int id, String contacto, String direccion) {
         this.nombre = nombre;
         this.id = id;
         this.contacto = contacto;
