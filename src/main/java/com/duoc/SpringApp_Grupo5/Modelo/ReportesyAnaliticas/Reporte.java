@@ -1,22 +1,30 @@
 package com.duoc.SpringApp_Grupo5.Modelo.ReportesyAnaliticas;
 
 import java.util.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.json.JSONObject;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Reporte {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String tipo;
     private Date fechaGeneracion;
-    private JSONObject datos;
-
-    public Reporte(int id, String tipo, Date fechaGeneracion, JSONObject datos) {
-        this.id = id;
-        this.tipo = tipo;
-        this.fechaGeneracion = fechaGeneracion;
-        this.datos = datos;
-    }
+    private String datos;
 
 
+    /*Metodos viejos (borrador)
     public void generarReporte() {
         String reporteGenerado = "";
         reporteGenerado += "Fecha de Generacion: " + fechaGeneracion + "\n";
@@ -25,5 +33,5 @@ public class Reporte {
         reporteGenerado += "Reporte: " + datos.toString() + "\n";
         System.out.println(reporteGenerado);
 
-    }
+    }*/
 }

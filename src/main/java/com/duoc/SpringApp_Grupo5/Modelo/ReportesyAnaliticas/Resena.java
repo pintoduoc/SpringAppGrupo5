@@ -1,58 +1,28 @@
 package com.duoc.SpringApp_Grupo5.Modelo.ReportesyAnaliticas;
 
 import com.duoc.SpringApp_Grupo5.Modelo.GestionInventario.Producto;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Resena {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idResena, calificacion;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id_cliente")
     private Cliente cliente;
+    @OneToOne
+    @JoinColumns({
+            @JoinColumn(name = "producto_id", referencedColumnName = "id"),
+            @JoinColumn(name = "producto_proveedorId", referencedColumnName = "proveedorId"),
+            @JoinColumn(name = "producto_stock", referencedColumnName = "stock")
+    })
     private Producto producto;
     private String comentario;
-
-    public Resena(int idResena, int calificacion, Cliente cliente, Producto producto, String comentario) {
-        this.idResena = idResena;
-        this.calificacion = calificacion;
-        this.cliente = cliente;
-        this.producto = producto;
-        this.comentario = comentario;
-    }
-
-    public int getIdResena() {
-        return idResena;
-    }
-
-    public void setIdResena(int idResena) {
-        this.idResena = idResena;
-    }
-
-    public int getCalificacion() {
-        return calificacion;
-    }
-
-    public void setCalificacion(int calificacion) {
-        this.calificacion = calificacion;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
-    public String getComentario() {
-        return comentario;
-    }
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
 }
