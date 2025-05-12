@@ -1,15 +1,15 @@
 package com.duoc.SpringApp_Grupo5.Modelo.GestionInventario;
 
-public class producto {
+public class Producto {
     private int id, proveedorId, stock;
     private String nombre, descripcion, categoria;
     private float precio;
 
     //Constructores:
-    public producto() {
+    public Producto() {
     }
 
-    public producto(int id, int proveedorId, int stock, String nombre, String descripcion, String categoria, float precio) {
+    public Producto(int id, int proveedorId, int stock, String nombre, String descripcion, String categoria, float precio) {
         this.id = id;
         this.proveedorId = proveedorId;
         this.stock = stock;
