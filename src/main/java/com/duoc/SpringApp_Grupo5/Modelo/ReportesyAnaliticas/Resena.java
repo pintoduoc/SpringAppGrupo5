@@ -13,16 +13,13 @@ import lombok.NoArgsConstructor;
 public class Resena {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idResena, calificacion;
+    private int idResena;
+    private int calificacion;
     @ManyToOne
     @JoinColumn(name = "cliente_id_cliente")
     private Cliente cliente;
     @OneToOne
-    @JoinColumns({
-            @JoinColumn(name = "producto_id", referencedColumnName = "id"),
-            @JoinColumn(name = "producto_proveedorId", referencedColumnName = "proveedorId"),
-            @JoinColumn(name = "producto_stock", referencedColumnName = "stock")
-    })
+    @JoinColumn(name = "producto_id_producto")
     private Producto producto;
     private String comentario;
 }

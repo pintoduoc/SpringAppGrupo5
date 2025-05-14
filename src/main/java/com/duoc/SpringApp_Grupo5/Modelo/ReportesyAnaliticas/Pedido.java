@@ -20,7 +20,9 @@ public class Pedido {
     @JoinColumn(name = "cliente_id_cliente")
     private Cliente cliente;
     private String estado;
-    private List<Producto> productosPedido = new ArrayList<>();
+    @OneToMany
+    @JoinTable(name = "pedido_producto", joinColumns = @JoinColumn(name = "pedido_id_pedido"), inverseJoinColumns = @JoinColumn(name = "producto_id_producto"))
+    private List<Producto> productos = new ArrayList<>();
 
 
     /*Metodos viejos (borrador)

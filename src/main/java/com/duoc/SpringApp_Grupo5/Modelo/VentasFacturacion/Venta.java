@@ -2,10 +2,7 @@ package com.duoc.SpringApp_Grupo5.Modelo.VentasFacturacion;
 
 import com.duoc.SpringApp_Grupo5.Modelo.GestionInventario.Producto;
 import com.duoc.SpringApp_Grupo5.Modelo.Usuarios.Usuario;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +20,11 @@ public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idVenta;
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+    @OneToMany
+    @JoinTable(name = "venta_producto", joinColumns = @JoinColumn(name = "venta_id_venta"), inverseJoinColumns = @JoinColumn(name = "producto_id_producto"))
     private List<Producto> productosVenta = new ArrayList<>();
 
 

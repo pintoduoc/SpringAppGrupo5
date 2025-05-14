@@ -1,9 +1,6 @@
 package com.duoc.SpringApp_Grupo5.Modelo.GestionInventario;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +14,11 @@ public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id, proveedorId, stock;
+    private int id_producto;
+    private int stock;
+    @OneToOne
+    @JoinColumn(name = "proveedor_id")
+    private Proveedor proveedor;
     private String nombre, descripcion, categoria;
     private float precio;
 }
