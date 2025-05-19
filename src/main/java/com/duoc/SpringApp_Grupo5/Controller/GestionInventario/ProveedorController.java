@@ -1,6 +1,7 @@
 package com.duoc.SpringApp_Grupo5.Controller.GestionInventario;
 
 import com.duoc.SpringApp_Grupo5.Modelo.GestionInventario.Proveedor;
+import com.duoc.SpringApp_Grupo5.Service.GestionInventario.ProveedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,7 @@
 package com.duoc.SpringApp_Grupo5.Controller.LogisticayEnvio;
 
 import com.duoc.SpringApp_Grupo5.Modelo.LogisticayEnvio.Envio;
+import com.duoc.SpringApp_Grupo5.Service.LogisticayEnvio.EnvioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
