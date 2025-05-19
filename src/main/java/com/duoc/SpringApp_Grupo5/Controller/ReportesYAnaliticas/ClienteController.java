@@ -1,6 +1,7 @@
 package com.duoc.SpringApp_Grupo5.Controller.ReportesYAnaliticas;
 
 import com.duoc.SpringApp_Grupo5.Modelo.ReportesyAnaliticas.Cliente;
+import com.duoc.SpringApp_Grupo5.Service.ReportesyAnaliticas.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,7 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @GetMapping
-    public String getAllClientes() {return envioService.getAllEnvios}
+    public String getAllClientes() {return clienteService.getAllClientes();}
 
     @PostMapping
     public String addCliente(@RequestBody Cliente cliente) {return clienteService.addCliente(cliente); }

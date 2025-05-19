@@ -56,7 +56,7 @@ public class EnvioService {
     }
     //Eliminar
     public String deleteEnvio(int id){
-        if(!envioRepository.existsById(id)){
+        if(envioRepository.existsById(id)){
             envioRepository.deleteById(id);
             return "Envio eliminado correctamente";
         }else{

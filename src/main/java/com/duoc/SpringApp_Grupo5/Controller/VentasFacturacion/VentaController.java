@@ -1,6 +1,7 @@
 package com.duoc.SpringApp_Grupo5.Controller.VentasFacturacion;
 
-import com.duoc.SpringApp_Grupo5.Modelo.VentasFacturacion.venta;
+import com.duoc.SpringApp_Grupo5.Modelo.VentasFacturacion.Venta;
+import com.duoc.SpringApp_Grupo5.Service.VentasFacturacion.VentaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 public class VentaController {
 
     @Autowired
-    private  VentaService ventaService;
+    private VentaService ventaService;
 
     @GetMapping
-    public String getAllVentas() {return ventaService.getAllServices(); }
+    public String getAllVentas() {return ventaService.getAllVentas(); }
 
     @PostMapping
     public String addVenta(@RequestBody Venta venta) {return ventaService.addVenta(venta); }

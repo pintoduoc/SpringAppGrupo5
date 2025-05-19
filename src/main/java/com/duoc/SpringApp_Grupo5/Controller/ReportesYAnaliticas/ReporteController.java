@@ -1,6 +1,7 @@
 package com.duoc.SpringApp_Grupo5.Controller.ReportesYAnaliticas;
 
 import com.duoc.SpringApp_Grupo5.Modelo.ReportesyAnaliticas.Reporte;
+import com.duoc.SpringApp_Grupo5.Service.ReportesyAnaliticas.ReporteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class ReporteController {
     public String addReporte(@RequestBody Reporte reporte) {return reporteService.addReporte(reporte); }
 
     @GetMapping("/{id}")
-    public String getReporteById(@PathVariable int id) {return reporteService,getReporteById(id); }
+    public String getReporteById(@PathVariable int id) {return reporteService.getReporteById(id); }
 
     @DeleteMapping("/{id}")
     public String deleteReporte(@PathVariable int id) {return reporteService.deleteReporte(id); }

@@ -1,6 +1,7 @@
 package com.duoc.SpringApp_Grupo5.Controller.Usuarios;
 
-import com.duoc.SpringApp_Grupo5.Modelo.Usuarios.usuario;
+import com.duoc.SpringApp_Grupo5.Modelo.Usuarios.Usuario;
+import com.duoc.SpringApp_Grupo5.Service.Usuarios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

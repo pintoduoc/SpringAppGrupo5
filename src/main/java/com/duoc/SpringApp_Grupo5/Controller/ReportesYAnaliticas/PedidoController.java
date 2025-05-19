@@ -1,6 +1,7 @@
 package com.duoc.SpringApp_Grupo5.Controller.ReportesYAnaliticas;
 
 import com.duoc.SpringApp_Grupo5.Modelo.ReportesyAnaliticas.Pedido;
+import com.duoc.SpringApp_Grupo5.Service.ReportesyAnaliticas.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
