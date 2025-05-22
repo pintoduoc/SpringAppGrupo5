@@ -16,11 +16,11 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPedido;
-    @OneToOne
-    @JoinColumn(name = "cliente_id_cliente")
+    @ManyToOne
+    @JoinColumn(name = "cliente_id_cliente", referencedColumnName = "idCliente")
     private Cliente cliente;
     private String estado;
-    @OneToMany
+    @ManyToMany
     @JoinTable(name = "pedido_producto", joinColumns = @JoinColumn(name = "pedido_id_pedido"), inverseJoinColumns = @JoinColumn(name = "producto_id_producto"))
     private List<Producto> productos = new ArrayList<>();
 

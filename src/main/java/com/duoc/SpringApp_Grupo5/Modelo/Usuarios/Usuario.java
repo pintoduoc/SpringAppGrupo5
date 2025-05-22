@@ -16,7 +16,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nombre, email, contraseña, rol;
+    private String nombre, email, contrasena, rol;
     private boolean estado;
 
     /*Metodos viejos (borrador):

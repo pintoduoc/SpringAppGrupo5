@@ -21,9 +21,9 @@ public class Venta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idVenta;
     @OneToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
-    @OneToMany
+    @ManyToMany
     @JoinTable(name = "venta_producto", joinColumns = @JoinColumn(name = "venta_id_venta"), inverseJoinColumns = @JoinColumn(name = "producto_id_producto"))
     private List<Producto> productosVenta = new ArrayList<>();
 

@@ -16,10 +16,10 @@ public class UsuarioService {
     public String getAllUsuarios() {
         String output = "";
         for (Usuario usuario : usuarioRepository.findAll()){
-            output += "ID Usuario: "+usuario.getId();
+            output += "ID Usuario: "+usuario.getId()+"\n";
             output += "Nombre: "+usuario.getNombre()+"\n";
             output += "Email: "+usuario.getEmail()+"\n";
-            output += "Contraseña: "+usuario.getContraseña()+"\n";
+            output += "Contraseña: "+usuario.getContrasena()+"\n";
             output += "Rol: "+usuario.getRol()+"\n";
 
         }
@@ -34,7 +34,7 @@ public class UsuarioService {
             output += "ID Usuario: "+buscado.getId()+"\n";
             output += "Nombre: "+buscado.getNombre()+"\n";
             output += "Email: "+buscado.getEmail()+"\n";
-            output += "Contraseña: "+buscado.getContraseña()+"\n";
+            output += "Contraseña: "+buscado.getContrasena()+"\n";
             output += "Rol: "+buscado.getRol()+"\n";
             return output;
         }else{
@@ -68,7 +68,7 @@ public class UsuarioService {
             Usuario buscado =usuarioRepository.findById(id).get();
             buscado.setNombre(usuario.getNombre());
             buscado.setEmail(usuario.getEmail());
-            buscado.setContraseña(usuario.getContraseña());
+            buscado.setContrasena(usuario.getContrasena());
             buscado.setRol(usuario.getRol());
             usuarioRepository.save(buscado);
             return "Usuario actualizado con exito";

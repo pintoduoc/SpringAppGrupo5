@@ -18,7 +18,7 @@ public class ProductoService {
         for (Producto producto : productoRepository.findAll()) {
             output += "ID Producto: "+producto.getId_producto()+"\n";
             output += "Stock: "+producto.getStock()+"\n";
-            output += "Proveedor: "+producto.getProveedor()+"\n";
+            output += "ID Proveedor: "+producto.getProveedor().getId()+"\n";
             output += "Nombre: "+producto.getNombre()+"\n";
             output += "Descripcion: "+producto.getDescripcion()+"\n";
             output += "Categoria: "+producto.getCategoria()+"\n";
@@ -38,7 +38,7 @@ public class ProductoService {
             Producto buscado=productoRepository.findById(id).get();
             output += "ID Producto: "+buscado.getId_producto()+"\n";
             output += "Stock: "+buscado.getStock()+"\n";
-            output += "Proveedor: "+buscado.getProveedor()+"\n";
+            output += "ID Proveedor: "+buscado.getProveedor().getId()+"\n";
             output += "Nombre: "+buscado.getNombre()+"\n";
             output += "Descripcion: "+buscado.getDescripcion()+"\n";
             output += "Categoria: "+buscado.getCategoria()+"\n";

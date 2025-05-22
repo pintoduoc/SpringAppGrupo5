@@ -16,8 +16,8 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_producto;
     private int stock;
-    @OneToOne
-    @JoinColumn(name = "proveedor_id")
+    @ManyToOne
+    @JoinColumn(name = "proveedor_id", referencedColumnName = "id")
     private Proveedor proveedor;
     private String nombre, descripcion, categoria;
     private float precio;
