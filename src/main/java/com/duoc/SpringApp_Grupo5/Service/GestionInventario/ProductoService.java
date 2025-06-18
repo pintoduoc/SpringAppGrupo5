@@ -5,6 +5,8 @@ import com.duoc.SpringApp_Grupo5.Repositorio.GestionInventario.ProductoRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductoService {
 
@@ -12,64 +14,35 @@ public class ProductoService {
     private ProductoRepository productoRepository;
 
     //Listar:
-    public String getAllProductos() {
-        String output = "";
-
-        for (Producto producto : productoRepository.findAll()) {
-            output += "ID Producto: "+producto.getId_producto()+"\n";
-            output += "Stock: "+producto.getStock()+"\n";
-            output += "ID Proveedor: "+producto.getProveedor().getId()+"\n";
-            output += "Nombre: "+producto.getNombre()+"\n";
-            output += "Descripcion: "+producto.getDescripcion()+"\n";
-            output += "Categoria: "+producto.getCategoria()+"\n";
-            output += "Precio: "+producto.getPrecio()+"\n";
-        }
-        if(output.isEmpty()) {
-            return "No se encontraron productos";
-        }else{
-            return output;
-        }
+    public List<Producto> getAllProductos() {
+       return productoRepository.findAll();
     }
 
     //Buscar
-    public String getProductoById(int id) {
-        String output = "";
+    public Producto getProductoById(int id) {
         if(productoRepository.existsById(id)){
-            Producto buscado=productoRepository.findById(id).get();
-            output += "ID Producto: "+buscado.getId_producto()+"\n";
-            output += "Stock: "+buscado.getStock()+"\n";
-            output += "ID Proveedor: "+buscado.getProveedor().getId()+"\n";
-            output += "Nombre: "+buscado.getNombre()+"\n";
-            output += "Descripcion: "+buscado.getDescripcion()+"\n";
-            output += "Categoria: "+buscado.getCategoria()+"\n";
-            output += "Precio: "+buscado.getPrecio()+"\n";
-            return output;
+            return  productoRepository.findById(id).get();
         }else{
-            return "No se encontraron productos con esa ID";
+            return null;
         }
     }
 
     //Agregar
-    public String addProducto(Producto producto) {
-        if(!productoRepository.existsById(producto.getId_producto())){
-            productoRepository.save(producto);
-            return "Producto agregado correctamente";
-        }else{
-            return "Producto ya existente";
-        }
+    public Producto addProducto(Producto producto) {
+        return productoRepository.save(producto);
     }
     //Eliminar
-    public String deleteProducto(int id) {
+    public boolean deleteProducto(int id) {
         if(productoRepository.existsById(id)){
             productoRepository.deleteById(id);
-            return "Producto eliminado correctamente";
+            return true;
         }else{
-            return "No se encontraron productos con esa ID";
+            return false;
         }
     }
 
     //Actualizar
-    public String updateProducto(int id, Producto producto) {
+    public Producto updateProducto(int id, Producto producto) {
         if(productoRepository.existsById(id)){
             Producto buscado=productoRepository.findById(id).get();
             buscado.setStock(producto.getStock());
@@ -79,9 +52,9 @@ public class ProductoService {
             buscado.setCategoria(producto.getCategoria());
             buscado.setPrecio(producto.getPrecio());
             productoRepository.save(buscado);
-            return "Producto actualizado correctamente";
+            return producto;
         }else{
-            return "No se encontraron productos con esa ID";
+            return null;
         }
     }
 
