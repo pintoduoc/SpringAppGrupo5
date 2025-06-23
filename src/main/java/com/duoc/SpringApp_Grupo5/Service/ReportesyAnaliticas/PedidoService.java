@@ -5,72 +5,50 @@ import com.duoc.SpringApp_Grupo5.Repositorio.ReportesyAnaliticas.PedidoRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PedidoService {
     @Autowired
     private PedidoRepository pedidoRepository;
 
     //Listar
-    public String getAllPedidos(){
-        String output = "";
-
-        for(Pedido pedido : pedidoRepository.findAll()){
-            output +="ID Pedido: "+pedido.getIdPedido()+"\n";
-            output +="Cliente Asignado: "+pedido.getCliente()+"\n";
-            output +="Estado: "+pedido.getEstado()+"\n";
-            output +="Productos: "+pedido.getProductos()+"\n";
-        }
-        if(output.isEmpty()){
-            return "No se encontraron pedidos";
-        }else{
-            return output;
-        }
+    public List<Pedido> getAllPedidos(){
+        return pedidoRepository.findAll();
     }
     //Buscar
-    public String getPedidoById(int id){
-        String output = "";
-
+    public Pedido getPedidoById(int id){
         if(pedidoRepository.existsById(id)){
-            Pedido buscado = pedidoRepository.findById(id).get();
-            output = "ID Pedido: "+buscado.getIdPedido()+"\n";
-            output +="Cliente Asignado: "+buscado.getCliente()+"\n";
-            output +="Estado: "+buscado.getEstado()+"\n";
-            output +="Productos: "+buscado.getProductos()+"\n";
-            return output;
-        }else{
-            return "No se encontraron pedidos con esa ID";
+            return pedidoRepository.findById(id).get();
+        }else {
+            return null;
         }
     }
     //Agregar
-    public String addPedido(Pedido pedido){
-        if(!pedidoRepository.existsById(pedido.getIdPedido())){
-            pedidoRepository.save(pedido);
-            return "Pedido agregado correctamente";
-        }else{
-            return "Pedido ya existente";
-        }
+    public Pedido addPedido(Pedido pedido){
+        return pedidoRepository.save(pedido);
     }
     //Eliminar
-    public String deletePedido(int id){
+    public boolean deletePedido(int id){
         if(pedidoRepository.existsById(id)){
             pedidoRepository.deleteById(id);
-            return "Pedido eliminado correctamente";
-        }else{
-            return "No se encontraron pedidos con esa ID";
+            return true;
+        }else {
+            return false;
         }
     }
 
     //Actualizar
-    public String updatePedido(int id, Pedido pedido){
+    public Pedido updatePedido(int id, Pedido pedido){
         if(pedidoRepository.existsById(id)){
             Pedido buscado = pedidoRepository.findById(id).get();
             buscado.setCliente(pedido.getCliente());
             buscado.setEstado(pedido.getEstado());
             buscado.setProductos(pedido.getProductos());
             pedidoRepository.save(buscado);
-            return "Pedido actualizado correctamente";
+            return pedido;
         }else{
-            return "No se encontraron pedidos con esa ID";
+            return null;
         }
     }
 }
