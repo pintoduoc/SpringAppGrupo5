@@ -2,7 +2,6 @@ package com.duoc.SpringApp_Grupo5.Controller.GestionInventario;
 
 import com.duoc.SpringApp_Grupo5.Assemblers.GestionInventario.ProveedorModelAssembler;
 import com.duoc.SpringApp_Grupo5.Modelo.GestionInventario.Proveedor;
-import com.duoc.SpringApp_Grupo5.Service.GestionInventario.ProductoService;
 import com.duoc.SpringApp_Grupo5.Service.GestionInventario.ProveedorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,8 +23,6 @@ public class ProveedorController {
 
     @Autowired
     ProveedorModelAssembler assembler;
-    @Autowired
-    private ProductoService productoService;
 
     @GetMapping
     @Operation(summary = "Obtener todos los proveedores.", description = "Devuelve todos los proveedores registrados.")
@@ -58,7 +55,7 @@ public class ProveedorController {
     @DeleteMapping("/{id}")
     @Operation(summary = "Eliminar Proveedor.", description = "Busca un proveedor por su ID y lo elimina del registro.")
     public void deleteProveedor(@PathVariable int id) {
-        productoService.deleteProducto(id);
+        proveedorService.deleteProveedor(id);
     }
 
     @PutMapping("/{id}")
