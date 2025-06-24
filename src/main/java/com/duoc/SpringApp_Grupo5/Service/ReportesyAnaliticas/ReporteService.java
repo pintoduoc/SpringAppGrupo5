@@ -5,74 +5,52 @@ import com.duoc.SpringApp_Grupo5.Repositorio.ReportesyAnaliticas.ReporteReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReporteService {
     @Autowired
     private ReporteRepository reporteRepository;
 
     //Listar
-    public String getAllReportes() {
-        String output = "";
-
-        for(Reporte reporte : reporteRepository.findAll()) {
-            output +="ID Reporte: "+reporte.getId()+"\n";
-            output +="Tipo: "+reporte.getTipo()+"\n";
-            output +="Fecha de generacion: "+reporte.getFechaGeneracion()+"\n";
-            output +="Datos: "+reporte.getDatos()+"\n";
-        }
-        if(output.isEmpty()){
-            return "No se encontraron reportes";
-        }else{
-            return output;
-        }
+    public List<Reporte> getAllReportes() {
+        return reporteRepository.findAll();
     }
     //Buscar
-    public String getReporteById(int id) {
-        String output = "";
-
-        if(reporteRepository.existsById(id)) {
-            Reporte buscado = reporteRepository.findById(id).get();
-            output += "ID Reporte: "+buscado.getId()+"\n";
-            output += "Tipo: "+buscado.getTipo()+"\n";
-            output += "Fecha de generacion: "+buscado.getFechaGeneracion()+"\n";
-            output += "Datos: "+buscado.getDatos()+"\n";
-            return output;
-        }else{
-            return "No se encontraron reportes con esa ID";
+    public Reporte getReporteById(int id) {
+        if (reporteRepository.existsById(id)) {
+            return reporteRepository.findById(id).get();
+        }else {
+            return null;
         }
     }
 
     //Agregar
-    public String addReporte(Reporte reporte) {
-        if(!reporteRepository.existsById(reporte.getId())) {
-            reporteRepository.save(reporte);
-            return "Reporte agregado correctamente";
-        }else{
-            return "Reporte ya existente";
-        }
+    public Reporte addReporte(Reporte reporte) {
+        return reporteRepository.save(reporte);
     }
 
     //Eliminar
-    public String deleteReporte(int id) {
+    public boolean deleteReporte(int id) {
         if(reporteRepository.existsById(id)) {
             reporteRepository.deleteById(id);
-            return "Reporte eliminado correctamente";
-        }else{
-            return "No se encontraron reportes con esa ID";
+            return true;
+        }else {
+            return false;
         }
     }
 
     //Actualizar
-    public String updateReporte(int id, Reporte reporte) {
+    public Reporte updateReporte(int id, Reporte reporte) {
         if(reporteRepository.existsById(id)) {
             Reporte buscado = reporteRepository.findById(id).get();
             buscado.setTipo(reporte.getTipo());
             buscado.setFechaGeneracion(reporte.getFechaGeneracion());
             buscado.setDatos(reporte.getDatos());
             reporteRepository.save(buscado);
-            return "Reporte actualizado correctamente";
+            return reporte;
         }else{
-            return "No se encontraron reportes con esa ID";
+            return null;
         }
     }
 }
