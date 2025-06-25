@@ -5,6 +5,8 @@ import com.duoc.SpringApp_Grupo5.Repositorio.Usuarios.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 
 public class UsuarioService {
@@ -13,57 +15,36 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     //Listar
-    public String getAllUsuarios() {
-        String output = "";
-        for (Usuario usuario : usuarioRepository.findAll()){
-            output += "ID Usuario: "+usuario.getId()+"\n";
-            output += "Nombre: "+usuario.getNombre()+"\n";
-            output += "Email: "+usuario.getEmail()+"\n";
-            output += "Contraseña: "+usuario.getContrasena()+"\n";
-            output += "Rol: "+usuario.getRol()+"\n";
-
-        }
-        return output;
+    public List<Usuario> getAllUsuarios() {
+        return usuarioRepository.findAll();
     }
 
     //Buscar
-    public String getUsuarioById(int id) {
-        String output = "";
+    public Usuario getUsuarioById(int id) {
         if(usuarioRepository.existsById(id)){
-            Usuario buscado = usuarioRepository.findById(id).get();
-            output += "ID Usuario: "+buscado.getId()+"\n";
-            output += "Nombre: "+buscado.getNombre()+"\n";
-            output += "Email: "+buscado.getEmail()+"\n";
-            output += "Contraseña: "+buscado.getContrasena()+"\n";
-            output += "Rol: "+buscado.getRol()+"\n";
-            return output;
+            return usuarioRepository.findById(id).get();
         }else{
-            return "No se encuentra usuario con esa ID";
+            return null;
         }
     }
 
     //Agregar
-    public String addUsuario(Usuario usuario) {
-        if(!usuarioRepository.existsById(usuario.getId())){
-            usuarioRepository.save(usuario);
-            return "Usuario agregado correctamente";
-        }else{
-            return "Usuario ya existe";
-        }
+    public Usuario addUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 
     //Eliminar
-    public String deleteUsuario(int id) {
+    public boolean deleteUsuario(int id) {
         if(usuarioRepository.existsById(id)){
             usuarioRepository.deleteById(id);
-            return "Usuario eliminado correctamente";
+            return true;
         }else{
-            return "No se encontraron usuarios con esa ID";
+            return false;
         }
     }
 
     //Actualizar
-    public String updateUsuario(int id, Usuario usuario) {
+    public Usuario updateUsuario(int id, Usuario usuario) {
         if(usuarioRepository.existsById(id)){
             Usuario buscado =usuarioRepository.findById(id).get();
             buscado.setNombre(usuario.getNombre());
@@ -71,9 +52,9 @@ public class UsuarioService {
             buscado.setContrasena(usuario.getContrasena());
             buscado.setRol(usuario.getRol());
             usuarioRepository.save(buscado);
-            return "Usuario actualizado con exito";
+            return usuario;
         }else {
-            return "No se encontraron usuarios con esa ID";
+            return null;
         }
     }
 }
