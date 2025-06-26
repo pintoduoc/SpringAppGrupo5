@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Resena {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resena_seq")
+    @SequenceGenerator(name = "resena_seq", sequenceName = "RESENA_SEQ", allocationSize = 1)
     private int idResena;
     private int calificacion;
     @ManyToOne
