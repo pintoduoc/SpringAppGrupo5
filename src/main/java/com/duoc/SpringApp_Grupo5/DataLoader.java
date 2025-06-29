@@ -1,3 +1,4 @@
+/*
 package com.duoc.SpringApp_Grupo5;
 
 import com.duoc.SpringApp_Grupo5.Modelo.GestionInventario.Producto;
@@ -56,7 +57,7 @@ public class DataLoader implements CommandLineRunner {
         Faker faker = new Faker();
         Random random = new Random();
 
-        /*
+
         //Generar Proveedor
         for (int i = 0; i < 5; i++) {
             Proveedor proveedor = new Proveedor();
@@ -152,7 +153,8 @@ public class DataLoader implements CommandLineRunner {
             ventaRepository.save(venta);
         }
 
-         */
+
     }
 
 }
+*/
