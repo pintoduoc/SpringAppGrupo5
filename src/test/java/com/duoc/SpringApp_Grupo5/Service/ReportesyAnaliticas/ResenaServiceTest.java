@@ -82,7 +82,7 @@ class ResenaServiceTest {
 
     Resena result = resenaService.addResena(resena);
     assertNotNull(result);
-    assertEquals("Bueno", result.getIdResena());
+    assertEquals(3, result.getIdResena());
 
     verify(resenaRepository).save(resena);
   }
